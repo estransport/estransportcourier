@@ -171,7 +171,7 @@ button:hover { background:#2563eb; }
 
 <div class="card">
 <h2>Request Private Driver</h2>
-<form action="https://formsubmit.co/eddiesherrod@ymail.com" method="POST">
+<form id="driverForm">
 
 <input type="hidden" name="_cc" value="ecs3705@gmail.com,clicks2cash91@gmail.com">
 <input type="hidden" name="_next" value="confirmation.html">
@@ -282,6 +282,24 @@ button:hover { background:#2563eb; }
 Return to ES Transportation & Courier Services Home Page
 </a>
 </div>
+
+
+<script>
+document.getElementById("driverForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  fetch("https://formsubmit.co/eddiesherrod@ymail.com", {
+    method: "POST",
+    body: new FormData(this)
+  })
+  .then(response => {
+    window.location.href = "confirmation.html";
+  })
+  .catch(error => {
+    alert("There was an error submitting the form.");
+  });
+});
+</script>
 
 </body>
 </html>
