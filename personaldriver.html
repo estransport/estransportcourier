@@ -60,7 +60,7 @@ button:hover{background:var(--blue-light);}
 .airport-pill:hover{background:rgba(255,255,255,0.28);}
 .sticky-phone{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--blue);color:white;text-align:center;padding:12px;font-weight:700;font-size:15px;z-index:999;text-decoration:none;}
 .sticky-phone span{color:var(--blue-med);font-size:11px;display:block;font-weight:500;margin-bottom:2px;}
-@media(max-width:768px){.form-grid{grid-template-columns:1fr;}.sticky-phone{display:block;}.trust-stats{flex-direction:column;}.airport-pills{flex-direction:column;align-items:center;}body{padding-bottom:70px;}}
+@media(max-width:768px){.form-grid{grid-template-columns:1fr;}.sticky-phone{display:none;}.trust-stats{flex-direction:column;}.airport-pills{flex-direction:column;align-items:center;}body{padding-bottom:70px;}}
 
 /* Floating View Rates button - mobile only */
 #floatRatesBtn{display:none;position:fixed;bottom:70px;right:16px;z-index:998;background:#1565C0;color:white;border:none;border-radius:50px;padding:10px 16px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(21,101,192,0.45);opacity:0;transition:opacity 0.3s;}
@@ -68,7 +68,7 @@ button:hover{background:var(--blue-light);}
 @media(max-width:768px){#floatRatesBtn{display:block;}}
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"LocalBusiness","name":"ES Transportation & Courier Services","image":"https://estransport.github.io/estransportcourier/ESTransportationLogo.png","telephone":"832-991-3705","address":{"@type":"PostalAddress","addressLocality":"Houston","addressRegion":"TX","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":29.7604,"longitude":-95.3698},"url":"https://estransport.github.io/estransportcourier/personaldriver.html","openingHours":["Mo-Fr 05:00-00:00","Sa 05:00-15:00","Sa 18:00-00:00","Su 16:00-00:00"],"priceRange":"$$","description":"Professional Houston private driver service offering flat-rate airport transfers to IAH and Hobby, city trips, weddings, and special events across Houston TX and surrounding areas.","serviceArea":{"@type":"GeoCircle","geoMidpoint":{"@type":"GeoCoordinates","latitude":29.7604,"longitude":-95.3698},"geoRadius":"75000"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Houston Private Driver Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Houston Airport Transportation IAH","description":"Flat rate private driver to George Bush Intercontinental Airport"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Houston Airport Transportation Hobby","description":"Flat rate private driver to William P. Hobby Airport"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Houston Private Driver City Trips","description":"Private driver for city trips, events and business travel in Houston"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Houston Wedding Transportation","description":"Professional private driver for weddings and special events"}}]},"areaServed":["Houston","Katy","Sugar Land","Cypress","Missouri City","The Woodlands","Spring","Tomball","Conroe","Clear Lake","Pearland","Pasadena","Baytown","Energy Corridor","Galleria"],"knowsAbout":["Airport transportation Houston","Private driver Houston","IAH airport transfer","Hobby airport transfer","Houston chauffeur service","Wedding transportation Houston"]}
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"ES Transportation & Courier Services","image":"https://estransport.github.io/estransportcourier/ESTransportationLogo.png","telephone":"832-991-3705","address":{"@type":"PostalAddress","addressLocality":"Houston","addressRegion":"TX","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":29.7604,"longitude":-95.3698},"url":"https://estransport.github.io/estransportcourier/personaldriver.html","openingHours":["Mo-Fr 05:00-15:00","Mo-Fr 18:00-00:00","Sa 05:00-15:00","Sa 18:00-00:00","Su 16:00-00:00"],"priceRange":"$$","description":"Professional Houston private driver service offering flat-rate airport transfers to IAH and Hobby, city trips, weddings, and special events across Houston TX and surrounding areas.","serviceArea":{"@type":"GeoCircle","geoMidpoint":{"@type":"GeoCoordinates","latitude":29.7604,"longitude":-95.3698},"geoRadius":"75000"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Houston Private Driver Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Houston Airport Transportation IAH","description":"Flat rate private driver to George Bush Intercontinental Airport"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Houston Airport Transportation Hobby","description":"Flat rate private driver to William P. Hobby Airport"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Houston Private Driver City Trips","description":"Private driver for city trips, events and business travel in Houston"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Houston Wedding Transportation","description":"Professional private driver for weddings and special events"}}]},"areaServed":["Houston","Katy","Sugar Land","Cypress","Missouri City","The Woodlands","Spring","Tomball","Conroe","Clear Lake","Pearland","Pasadena","Baytown","Energy Corridor","Galleria"],"knowsAbout":["Airport transportation Houston","Private driver Houston","IAH airport transfer","Hobby airport transfer","Houston chauffeur service","Wedding transportation Houston"]}
 </script>
 </head>
 <body id="top">
@@ -172,7 +172,7 @@ button:hover{background:var(--blue-light);}
 <div class="card">
 <h3>Service Hours</h3>
 <table class="hours-table">
-  <tr><td>Monday &ndash; Friday</td><td>5:00 AM &ndash; 12:00 AM</td></tr>
+  <tr><td>Monday &ndash; Friday</td><td>5:00 AM &ndash; 3:00 PM &nbsp;|&nbsp; 6:00 PM &ndash; 12:00 AM</td></tr>
   <tr><td>Saturday</td><td>5:00 AM &ndash; 3:00 PM &nbsp;|&nbsp; 6:00 PM &ndash; 12:00 AM</td></tr>
   <tr><td>Sunday</td><td>4:00 PM &ndash; 12:00 AM</td></tr>
 </table>
@@ -366,7 +366,7 @@ button:hover{background:var(--blue-light);}
 </div>
 
 <input type="text" name="fi-text-promoCode" placeholder="Promo Code (Optional &mdash; e.g. FLAVOR15, CITYTRIPS15)" class="form-full" style="text-transform:uppercase;" oninput="this.value=this.value.toUpperCase()">
-<p style="font-size:11px;color:#888;margin:0 0 6px;grid-column:1 / -1;font-style:italic;">FLAVOR15: valid for rides to Flavor Guide restaurants only. CITYTRIPS15: valid for Houston city trips &amp; events. Both codes verified at booking confirmation.</p>
+<p style="font-size:11px;color:#888;margin:0 0 6px;grid-column:1 / -1;font-style:italic;">FLAVOR15: valid for rides to Flavor Guide restaurants only. CITYTRIPS15: valid for Houston city trips &amp; events. Both codes verified at booking confirmation. Only 1 promo code valid per request.</p>
 
 <textarea name="fi-text-specialInstructions" placeholder="Special Instructions (Optional)" class="form-full"></textarea>
 
@@ -557,7 +557,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 <!-- Floating View Rates button (mobile only) -->
 <button id="floatRatesBtn" onclick="document.getElementById('airport-rates').scrollIntoView({behavior:'smooth'});">&#9992; View Rates</button>
-<a href="tel:8329913705" class="sticky-phone"><span>Call or Text for Private Driver</span>832-991-3705</a>
+
 
 
 <script>
