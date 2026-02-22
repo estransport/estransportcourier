@@ -114,7 +114,7 @@ button:hover{background:var(--blue-light);}
   <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
     <div>
       <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#90CAF9;margin-bottom:4px;">Promo Code</div>
-      <div style="background:white;color:#1565C0;font-weight:800;font-size:18px;letter-spacing:4px;padding:6px 20px;border-radius:6px;display:inline-block;">FLAVOR15</div>
+      <div onclick="navigator.clipboard.writeText('FLAVOR15');this.setAttribute('data-copied','true');this.querySelector('.copy-lbl').textContent='Copied!';setTimeout(()=>{this.removeAttribute('data-copied');this.querySelector('.copy-lbl').textContent='Tap to copy'},1500);" style="background:white;color:#1565C0;font-weight:800;font-size:18px;letter-spacing:4px;padding:6px 20px;border-radius:6px;display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none;">FLAVOR15<span class="copy-lbl" style="font-size:10px;font-weight:600;letter-spacing:0;opacity:0.5;">Tap to copy</span></div>
       <div style="font-size:10px;color:#90CAF9;margin-top:5px;">Enter in Special Instructions when booking &bull; $20.00 booking fee not included</div>
     </div>
     <a href="https://estransport.github.io/flavorguide/index.html" style="background:white;color:#1565C0;font-weight:700;font-size:13px;padding:10px 22px;border-radius:50px;text-decoration:none;white-space:nowrap;">Browse Flavor Guide &rarr;</a>
@@ -131,7 +131,7 @@ button:hover{background:var(--blue-light);}
 
 <div class="card">
 <h2>Houston Private Driver Services | Airport Transfers, Events &amp; City Trips</h2>
-<p style="font-size:16px;">Reliable, discreet private transportation for airport transfers, weddings, special events, business travel, and city trips throughout the Houston area.</p>
+<p style="font-size:16px;">Travel around Houston and the greater area? Reliable, discreet private transportation for airport transfers, weddings, special events, business travel, and city trips.</p>
 </div>
 
 <!-- CITY TRIPS SHOWCASE -->
@@ -160,19 +160,14 @@ button:hover{background:var(--blue-light);}
   <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
     <div>
       <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#90CAF9;margin-bottom:4px;">Promo Code</div>
-      <div style="background:white;color:#1565C0;font-weight:800;font-size:18px;letter-spacing:4px;padding:6px 20px;border-radius:6px;display:inline-block;">CITYTRIPS15</div>
+      <div onclick="navigator.clipboard.writeText('CITYTRIPS15');this.setAttribute('data-copied','true');this.querySelector('.copy-lbl').textContent='Copied!';setTimeout(()=>{this.removeAttribute('data-copied');this.querySelector('.copy-lbl').textContent='Tap to copy'},1500);" style="background:white;color:#1565C0;font-weight:800;font-size:18px;letter-spacing:4px;padding:6px 20px;border-radius:6px;display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none;">CITYTRIPS15<span class="copy-lbl" style="font-size:10px;font-weight:600;letter-spacing:0;opacity:0.5;">Tap to copy</span></div>
       <div style="font-size:10px;color:#90CAF9;margin-top:5px;">Enter in Special Instructions when booking &bull; $20.00 booking fee not included</div>
     </div>
     <a href="#driverForm" onclick="event.preventDefault();document.getElementById('driverForm').scrollIntoView({behavior:'smooth'});" style="background:white;color:#1565C0;font-weight:700;font-size:13px;padding:10px 22px;border-radius:50px;text-decoration:none;white-space:nowrap;">Book a City Trip &rarr;</a>
   </div>
 </div>
 
-<div class="card">
-<h3>Private Driver Service Details &mdash; Greater Houston TX</h3>
-<p><strong>Service Area:</strong> Greater Houston and surrounding areas including Katy, Sugar Land, The Woodlands, and more</p>
-<p><strong>Passenger Capacity:</strong> 1&ndash;4 passengers per ride</p>
-<p><strong>Trip Distance:</strong> Minimum 10 miles | Maximum 75 miles</p>
-</div>
+
 
 <div class="card">
 <h3>Service Hours</h3>
@@ -197,7 +192,7 @@ button:hover{background:var(--blue-light);}
 <h2>Pricing &amp; Services</h2>
 <p><strong>No surge pricing. No surprises. Professional service guaranteed.</strong></p>
 <div style="background:#E3F2FD;border-left:4px solid #1565C0;border-radius:6px;padding:12px 16px;margin:12px 0 16px;">
-<strong>&#128179; Cashless Service:</strong> All payments processed via <strong>PayPal or Zelle</strong> only. No cash accepted at any point.
+<strong>&#128179; Cashless Service:</strong> All payments processed via <strong>PayPal (Credit/Debit Cards) or Zelle</strong> only. No cash accepted at any point.
 </div>
 <h3 style="margin-top:20px;">City Trips &amp; Events</h3>
 <p>Pricing based on one-way distance between pickup and destination:</p>
@@ -270,7 +265,8 @@ button:hover{background:var(--blue-light);}
 
 <!-- SECTION 5: VEHICLE & POLICIES -->
 <div class="card" id="vehicle-policies">
-<h2 style="margin-bottom:12px;">Vehicle &amp; Policies</h2>
+<h2 style="margin-bottom:4px;">Personal Driver</h2>
+<p style="font-size:12px;color:#666;margin-bottom:12px;">Greater Houston &bull; Katy &bull; Sugar Land &bull; The Woodlands &bull; and more</p>
 
 <!-- Vehicle specs row -->
 <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;">
