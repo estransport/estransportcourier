@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ES Transportation — Availability Calendar</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1565C0;--blue-light:#1E88E5;--blue-pale:#E3F2FD;--blue-med:#90CAF9;--green:#2e7d32;--green-bg:#e8f5e9;--red:#c62828;--red-bg:#ffebee;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Montserrat',sans-serif;background:#f4f6f9;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:30px 16px;}
+.cal-open-btn{background:var(--blue);color:white;border:none;border-radius:8px;padding:13px 26px;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:9px;box-shadow:0 4px 14px rgba(21,101,192,0.35);transition:background 0.2s,transform 0.15s;}
+.cal-open-btn:hover{background:var(--blue-light);transform:translateY(-1px);}
+.cal-overlay{display:none;position:fixed;inset:0;background:rgba(13,33,55,0.65);z-index:200;align-items:center;justify-content:center;padding:16px;}
+.cal-overlay.active{display:flex;}
+.cal-card{background:white;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,0.3);width:100%;max-width:420px;max-height:92vh;overflow:hidden;display:flex;flex-direction:column;animation:calPop 0.22s ease;}
+@keyframes calPop{from{opacity:0;transform:scale(0.94) translateY(14px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.cal-header{background:linear-gradient(135deg,var(--blue),var(--blue-light));padding:16px 20px;color:white;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.cal-header h3{font-size:15px;font-weight:700;}
+.cal-header p{font-size:11px;opacity:.8;margin-top:2px;}
+.cal-close{background:none;border:none;color:white;font-size:22px;cursor:pointer;opacity:.75;line-height:1;padding:2px 6px;}
+.cal-close:hover{opacity:1;}
+.cal-body{overflow-y:auto;flex:1;}
+.cal-nav{display:flex;align-items:center;justify-content:space-between;padding:13px 18px 10px;border-bottom:1px solid #f0f0f0;}
+.cal-nav-btn{background:var(--blue-pale);border:none;border-radius:6px;width:32px;height:32px;font-size:16px;cursor:pointer;color:var(--blue);font-weight:700;}
+.cal-nav-btn:hover{background:var(--blue-med);}
+.cal-month-label{font-size:15px;font-weight:700;color:#1a1a2e;}
+.cal-days-header{display:grid;grid-template-columns:repeat(7,1fr);padding:10px 14px 4px;}
+.cal-day-lbl{text-align:center;font-size:10px;font-weight:700;color:#aaa;text-transform:uppercase;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;padding:4px 14px 12px;}
+.cal-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:12px;font-weight:700;cursor:default;transition:transform .12s;}
+.cal-cell.empty{background:transparent;}
+.cal-cell.past{background:#f5f5f5;color:#ccc;}
+.cal-cell.off{background:var(--red-bg);color:var(--red);}
+.cal-cell.partial{background:#fff8e1;color:#e65100;cursor:pointer;}
+.cal-cell.open{background:var(--green-bg);color:var(--green);cursor:pointer;}
+.cal-cell.open:hover,.cal-cell.partial:hover{transform:scale(1.12);}
+.cal-cell.today{outline:2px solid var(--blue);outline-offset:-2px;}
+.cal-cell.selected{outline:2px solid var(--blue);outline-offset:-2px;background:var(--blue-pale)!important;color:var(--blue)!important;}
+.cal-legend{display:flex;gap:10px;justify-content:center;padding:0 14px 12px;flex-wrap:wrap;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:600;color:#666;}
+.legend-dot{width:11px;height:11px;border-radius:3px;}
+.ld-open{background:var(--green-bg);border:1px solid #a5d6a7;}
+.ld-partial{background:#fff8e1;border:1px solid #ffcc80;}
+.ld-off{background:var(--red-bg);border:1px solid #ef9a9a;}
+.ld-today{background:white;border:2px solid var(--blue);}
+.slots-panel{border-top:2px solid var(--blue-pale);padding:14px 18px 16px;background:#f8fbff;display:none;}
+.slots-panel.active{display:block;}
+.slots-date-label{font-size:12px;font-weight:700;color:var(--blue);margin-bottom:10px;text-transform:uppercase;}
+.slot-row{display:flex;align-items:center;gap:10px;background:white;border:1px solid #c8e6c9;border-radius:8px;padding:9px 13px;margin-bottom:7px;font-size:12px;font-weight:600;color:var(--green);}
+.slot-row:last-child{margin-bottom:0;}
+.cal-footer{background:var(--blue-pale);margin:12px 14px 14px;padding:10px 13px;border-radius:8px;font-size:11px;color:#1565C0;font-weight:600;text-align:center;line-height:1.6;}
+</style>
+</head>
+<body>
+<button class="cal-open-btn" onclick="openCalendar()">&#128197; Check Availability</button>
+<div class="cal-overlay" id="calOverlay" onclick="if(event.target.id==='calOverlay')closeCalendar()">
+  <div class="cal-card">
+    <div class="cal-header">
+      <div><h3>&#128197; Check Availability</h3><p>ES Transportation &amp; Courier Services</p></div>
+      <button class="cal-close" onclick="closeCalendar()">&#x2715;</button>
+    </div>
+    <div class="cal-body">
+      <div class="cal-nav">
+        <button class="cal-nav-btn" onclick="changeMonth(-1)">&#8592;</button>
+        <span class="cal-month-label" id="calMonthLabel"></span>
+        <button class="cal-nav-btn" onclick="changeMonth(1)">&#8594;</button>
+      </div>
+      <div class="cal-days-header">
+        <div class="cal-day-lbl">Sun</div><div class="cal-day-lbl">Mon</div><div class="cal-day-lbl">Tue</div><div class="cal-day-lbl">Wed</div><div class="cal-day-lbl">Thu</div><div class="cal-day-lbl">Fri</div><div class="cal-day-lbl">Sat</div>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+      <div class="cal-legend">
+        <div class="legend-item"><div class="legend-dot ld-open"></div>Available</div>
+        <div class="legend-item"><div class="legend-dot ld-partial"></div>Limited</div>
+        <div class="legend-item"><div class="legend-dot ld-off"></div>Unavailable</div>
+        <div class="legend-item"><div class="legend-dot ld-today"></div>Today</div>
+      </div>
+      <div class="slots-panel" id="slotsPanel">
+        <div class="slots-date-label" id="slotDateTitle"></div>
+        <div id="slotsList"></div>
+      </div>
+      <div class="cal-footer">&#128222; Call or text <strong>832-991-3705</strong> to book<br>Tap any date to see available times.</div>
+    </div>
+  </div>
+</div>
+<script>
+const BASE={0:[{s:"16:00",e:"17:00"},{s:"18:00",e:"24:00"}],1:[{s:"05:00",e:"11:00"},{s:"14:00",e:"17:00"},{s:"18:00",e:"24:00"}],2:[{s:"05:00",e:"11:00"},{s:"14:00",e:"17:00"},{s:"18:00",e:"24:00"}],3:[{s:"05:00",e:"11:00"},{s:"14:00",e:"17:00"},{s:"18:00",e:"24:00"}],4:[{s:"05:00",e:"11:00"},{s:"14:00",e:"17:00"},{s:"18:00",e:"24:00"}],5:[{s:"05:00",e:"11:00"},{s:"14:00",e:"17:00"},{s:"18:00",e:"24:00"}],6:[{s:"05:00",e:"11:00"},{s:"14:00",e:"15:00"},{s:"18:00",e:"24:00"}]};
+const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const DATE_OVERRIDES = {};
+function toMins(t){if(t==="24:00")return 1440;const[h,m]=t.split(':').map(Number);return h*60+m;}
+function minsTo12(m){if(m===1440)return"12:00 AM";const h=Math.floor(m/60),mn=m%60,ap=h>=12?'PM':'AM',h12=h%12||12;return h12+':'+String(mn).padStart(2,'0')+' '+ap;}
+function toStr(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function getSlotsForDate(ds){if(DATE_OVERRIDES[ds]){const v=DATE_OVERRIDES[ds];if(v[0]==='OFF')return[];return v.map(s=>{const p=s.split(' – ');return{s:p[0],e:p[1]};});}const dow=new Date(ds+'T12:00:00').getDay(),base=BASE[dow]||[];return base.map(w=>({s:minsTo12(toMins(w.s)),e:minsTo12(toMins(w.e))}));}
+const today=new Date();let cY=today.getFullYear(),cM=today.getMonth(),selCell=null;
+function openCalendar(){document.getElementById('calOverlay').classList.add('active');renderCal();}
+function closeCalendar(){document.getElementById('calOverlay').classList.remove('active');hideSlots();}
+function changeMonth(dir){cM+=dir;if(cM>11){cM=0;cY++;}if(cM<0){cM=11;cY--;}hideSlots();renderCal();}
+function hideSlots(){document.getElementById('slotsPanel').classList.remove('active');if(selCell){selCell.classList.remove('selected');selCell=null;}}
+function renderCal(){document.getElementById('calMonthLabel').textContent=MONTHS[cM]+' '+cY;const grid=document.getElementById('calGrid');grid.innerHTML='';const first=new Date(cY,cM,1).getDay(),days=new Date(cY,cM+1,0).getDate(),tStr=toStr(today);for(let i=0;i<first;i++){const e=document.createElement('div');e.className='cal-cell empty';grid.appendChild(e);}for(let d=1;d<=days;d++){const ds=toStr(new Date(cY,cM,d));const el=document.createElement('div');el.textContent=d;const isPast=ds<tStr,isToday=ds===tStr,slots=getSlotsForDate(ds),base=(BASE[new Date(ds+'T12:00:00').getDay()]||[]).length;if(isPast&&!isToday){el.className='cal-cell past';}else if(slots.length===0){el.className='cal-cell off';}else if(slots.length<base){el.className='cal-cell partial';el.onclick=()=>showSlots(ds,slots,el);}else{el.className='cal-cell open';el.onclick=()=>showSlots(ds,slots,el);}if(isToday)el.classList.add('today');grid.appendChild(el);}}
+function showSlots(ds,slots,el){if(selCell)selCell.classList.remove('selected');selCell=el;el.classList.add('selected');const dow=new Date(ds+'T12:00:00').getDay();document.getElementById('slotDateTitle').textContent=DAYS[dow]+', '+formatDate(ds);const list=document.getElementById('slotsList');list.innerHTML='';slots.forEach(s=>{const r=document.createElement('div');r.className='slot-row';r.innerHTML='⏰ '+s.s+' – '+s.e;list.appendChild(r);});document.getElementById('slotsPanel').classList.add('active');}
+function formatDate(ds){const[y,mo,d]=ds.split('-');return MONTHS[parseInt(mo)-1]+' '+parseInt(d)+', '+y;}
+</script>
+</body>
+</html>
