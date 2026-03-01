@@ -10,7 +10,7 @@
 <style>
 :root{--blue:#1565C0;--blue-light:#1E88E5;--blue-pale:#E3F2FD;--blue-med:#90CAF9;--dark:#0D2137;--mid:#2C4A6E;}
 *{box-sizing:border-box;}
-body{font-family:'Montserrat',Arial,sans-serif;margin:0;background:#f4f6f9;color:#333;padding-bottom:80px;}
+body{font-family:'Montserrat',Arial,sans-serif;margin:0;background:#f4f6f9;color:#333;}
 h1,h2,h3{font-family:'Montserrat',Arial,sans-serif;}
 .container{max-width:820px;margin:auto;padding:24px 20px 40px;}
 .card{background:white;padding:24px;margin-bottom:18px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);}
@@ -74,9 +74,6 @@ header p{color:var(--blue-med);font-size:12px;margin:0;}
 .footer a{color:var(--blue-med);text-decoration:none;font-weight:bold;}
 .footer a:hover{text-decoration:underline;}
 
-/* Sticky phone — exact match to original */
-.sticky-phone{display:block;position:fixed;bottom:0;left:0;right:0;background:var(--blue);color:white;text-align:center;padding:11px;font-weight:700;font-size:15px;z-index:999;text-decoration:none;}
-.sticky-phone span{color:var(--blue-med);font-size:11px;display:block;font-weight:500;margin-bottom:1px;}
 
 @media(max-width:540px){
   .summary-grid{grid-template-columns:1fr;}
@@ -235,14 +232,15 @@ header p{color:var(--blue-med);font-size:12px;margin:0;}
     <h3>Ready to Book Your Ride?</h3>
     <p>Check availability and submit your booking request today.</p>
     <a href="https://estransport.github.io/estransportcourier/personaldriver.html" class="cta-btn">Book a Private Driver</a>
-    <p class="cta-phone">Questions? Call or text <a href="tel:8329913705">832-991-3705</a></p>
   </div>
 
 </div><!-- end container -->
 
-<div class="trust-bar">
-  <h3>Reliable. Insured. Verified.</h3>
-  <p>Valid driver's license &bull; Full insurance &bull; Comprehensive background checks</p>
+<div style="width:100%;background:#1a1a1a;color:white;padding:30px 0;text-align:center;">
+    <div style="max-width:800px;margin:0 auto;padding:0 20px;">
+        <h3 style="color:#FFD700;margin-bottom:10px;">Reliable. Insured. Verified.</h3>
+        <p style="font-size:15px;line-height:1.6;color:#ccc;">Experience the difference of a professional service. We hold a <b>valid driver's license</b>, carry <b>full insurance</b>, and have passed <b>comprehensive background checks</b> to ensure your Houston area courier and travel needs are safe, secure, and professional.</p>
+    </div>
 </div>
 
 <div class="footer">
@@ -253,11 +251,6 @@ header p{color:var(--blue-med);font-size:12px;margin:0;}
   <a href="https://estransport.github.io/estransportcourier/contact.html">Contact Us</a> |
   <a href="https://estransport.github.io/estransportcourier/faq.html">FAQs</a>
 </div>
-
-<a href="tel:8329913705" class="sticky-phone">
-  <span>Houston Private Driver &amp; Airport Transportation</span>
-  &#128222; Call/Text 832-991-3705
-</a>
 
 </body>
 </html>
