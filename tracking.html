@@ -63,7 +63,7 @@
     </div>
     <div class="steps" id="stepsContainer"></div>
   </div>
-  <div class="error-msg" id="errorMsg">Order not found. Please check your order number or call 832-991-3705.</div>
+  <div class="error-msg" id="errorMsg">We couldn't find your order right now. Please recheck your order number and try again, or call us at 832-991-3705.</div>
   <div class="footer-btns">
     <a href="https://estransport.github.io/estransportcourier/personaldriver.html">🏠 Home</a>
     <a href="https://estransport.github.io/estransportcourier/contact.html">✉️ Contact Us</a>
@@ -104,7 +104,7 @@
         if (!found) { errorMsg.classList.add('visible'); return; }
         renderResult(found);
       } catch(e) {
-        errorMsg.textContent = 'Unable to load data. Please try again or call 832-991-3705.';
+        errorMsg.textContent = 'We couldn't find your order right now. Please recheck your order number and try again, or call us at 832-991-3705.';
         errorMsg.classList.add('visible');
       }
     }
