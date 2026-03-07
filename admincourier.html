@@ -128,7 +128,7 @@
   </div>
   <script>
     const ADMIN_PIN       = '9193';
-    const APPS_https://script.google.com/macros/s/AKfycbyjCUSnXdWOfqUpNSXCfW87W8lintAkl1AfWxCcf1eTJn6FJRO6mRPKC8N5QKQaAuSv/exec = 'https://script.google.com/macros/s/AKfycbyjCUSnXdWOfqUpNSXCfW87W8lintAkl1AfWxCcf1eTJn6FJRO6mRPKC8N5QKQaAuSv/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyjCUSnXdWOfqUpNSXCfW87W8lintAkl1AfWxCcf1eTJn6FJRO6mRPKC8N5QKQaAuSv/exec'; = 'https://script.google.com/macros/s/AKfycbyjCUSnXdWOfqUpNSXCfW87W8lintAkl1AfWxCcf1eTJn6FJRO6mRPKC8N5QKQaAuSv/exec';
     const SHEET_https://docs.google.com/spreadsheets/d/e/2PACX-1vRCW5r0xE92x-KUG5QjmOmBMBeKq1PKzsA8CHa_vJ-FdTf6sOUbXGMS-XyfErxaZS8U-xPHrASDCl0K/pub?gid=1243888005&single=true&output=csv   = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRCW5r0xE92x-KUG5QjmOmBMBeKq1PKzsA8CHa_vJ-FdTf6sOUbXGMS-XyfErxaZS8U-xPHrASDCl0K/pub?gid=1243888005&single=true&output=csv';
     const SHEET_NAME      = 'courier-orders';
     const STATUS_COL      = 12;
@@ -231,7 +231,7 @@
         notes, extra_stop: extraStop, sheet: SHEET_NAME
       });
       try {
-        await fetch(APPS_https://script.google.com/macros/s/AKfycbyjCUSnXdWOfqUpNSXCfW87W8lintAkl1AfWxCcf1eTJn6FJRO6mRPKC8N5QKQaAuSv/exec + '?' + params.toString(), {method:'GET', mode:'no-cors'});
+        await fetch(https://script.google.com/macros/s/AKfycbyjCUSnXdWOfqUpNSXCfW87W8lintAkl1AfWxCcf1eTJn6FJRO6mRPKC8N5QKQaAuSv/exec + '?' + params.toString(), {method:'GET', mode:'no-cors'});
         await new Promise(r => setTimeout(r, 2000));
         await lookupOrder(true);
         successMsg.innerHTML = '&#10003; <strong>' + orderNum + '</strong> updated to <strong>' + selectedStatus + '</strong>';
