@@ -52,7 +52,7 @@
     <h1>Track Your Ride</h1>
     <p>Enter your order number from your confirmation.</p>
     <div class="input-row">
-      <input type="text" id="orderInput" placeholder="e.g. ES-1042" />
+      <input type="text" id="orderInput" placeholder="" />
       <button onclick="trackOrder()">Track</button>
     </div>
   </div>
@@ -104,7 +104,7 @@
         if (!found) { errorMsg.classList.add('visible'); return; }
         renderResult(found);
       } catch(e) {
-        errorMsg.textContent = 'We couldn't find your order right now. Please recheck your order number and try again, or call us at 832-991-3705.';
+        errorMsg.textContent = "We couldn't find your order right now. Please recheck your order number and try again, or call us at 832-991-3705.";
         errorMsg.classList.add('visible');
       }
     }
