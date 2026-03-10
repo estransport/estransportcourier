@@ -48,6 +48,8 @@ textarea{resize:vertical;min-height:70px}
 .sb{padding:10px 8px;border:2px solid #e0e8f0;border-radius:8px;background:#fff;font-size:12px;font-weight:600;color:#556;cursor:pointer;text-align:center;font-family:Barlow,sans-serif}
 .sb.sel{border-color:var(--navy);background:var(--navy);color:var(--sky)}
 .sb.hide{display:none}
+    .sb.esb{opacity:.4;pointer-events:none;}
+    .sb.esb.enabled{opacity:1;pointer-events:auto;}
 .sub{width:100%;padding:14px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;font-family:Barlow,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px}
 .sub:disabled{opacity:.6;cursor:not-allowed}
 .sp{width:18px;height:18px;border:3px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
@@ -94,7 +96,7 @@ textarea{resize:vertical;min-height:70px}
       <span>This ride has an extra stop</span>
     </div>
     <label>New Status</label>
-    <div class="sg"><div class="sb" onclick="selectStatus(this,'Submitted')">Submitted</div><div class="sb" onclick="selectStatus(this,'Reviewed / Approved')">Reviewed / Approved</div><div class="sb" onclick="selectStatus(this,'Payment Received')">Payment Received</div><div class="sb" onclick="selectStatus(this,'Picked Up')">Picked Up</div><div class="sb esb hide" onclick="selectStatus(this,'Extra Stop')">Extra Stop</div><div class="sb" onclick="selectStatus(this,'In Transit')">In Transit</div><div class="sb" onclick="selectStatus(this,'Out for Delivery')">Out for Delivery</div><div class="sb" onclick="selectStatus(this,'Delivered')" style="grid-column:1/-1">&#10003; Delivered</div></div>
+    <div class="sg"><div class="sb" onclick="selectStatus(this,'Submitted')">1. Submitted</div><div class="sb" onclick="selectStatus(this,'Reviewed / Approved')">2. Reviewed / Approved</div><div class="sb" onclick="selectStatus(this,'Payment Received')">3. Payment Received</div><div class="sb" onclick="selectStatus(this,'In Transit')">4. In Transit</div><div class="sb" onclick="selectStatus(this,'Picked Up')">5. Picked Up</div><div class="sb esb" onclick="selectStatus(this,'Extra Stop')">6. Extra Stop</div><div class="sb" onclick="selectStatus(this,'Delivered')">7. Delivered</div><div class="sb" onclick="selectStatus(this,'Completed')" style="grid-column:1/-1">&#10003; 8. Completed</div></div>
     <label>Notes (optional - shown to customer)</label>
     <textarea id="NT" placeholder="e.g. Driver is 5 min away"></textarea>
     <button class="sub" id="SBTN">
@@ -162,7 +164,7 @@ async function lookupOrder(silent){
       box.className="csb show "+(done?"warn":"normal");
       box.innerHTML="<strong>Current Status:</strong> "+st+(nt?" &middot; <strong>Notes:</strong> "+nt:"")+(ex?" &middot; <strong>Extra Stop:</strong> Yes":"");
       document.getElementById("EXT").checked=ex;
-      document.querySelectorAll(".esb").forEach(function(b){ b.classList.toggle("hide",!ex); });
+      document.querySelectorAll(".esb").forEach(function(b){ b.classList.toggle("enabled",ex); });
     } else {
       box.className="csb show normal"; box.innerHTML="Order not found.";
     }
@@ -173,7 +175,7 @@ async function lookupOrder(silent){
 function toggleExtra(){
   var cb=document.getElementById("EXT");
   cb.checked=!cb.checked;
-  document.querySelectorAll(".esb").forEach(function(b){ b.classList.toggle("hide",!cb.checked); });
+  document.querySelectorAll(".esb").forEach(function(b){ b.classList.toggle("enabled",cb.checked); });
   if(!cb.checked&&sel==="Extra Stop"){ sel=""; document.querySelectorAll(".sb").forEach(function(b){ b.classList.remove("sel"); }); }
 }
 

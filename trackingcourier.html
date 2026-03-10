@@ -71,8 +71,8 @@
   </div>
   <script>
     const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRCW5r0xE92x-KUG5QjmOmBMBeKq1PKzsA8CHa_vJ-FdTf6sOUbXGMS-XyfErxaZS8U-xPHrASDCl0K/pub?gid=847963520&single=true&output=csv';
-    const BASE_STAGES = ['Submitted','Reviewed / Approved','Payment Received','Picked Up','Extra Stop','In Transit','Out for Delivery','Delivered'];
-    const NO_EXTRA    = ['Submitted','Reviewed / Approved','Payment Received','Picked Up','In Transit','Out for Delivery','Delivered'];
+    const BASE_STAGES = ['Submitted','Reviewed / Approved','Payment Received','In Transit','Picked Up','Extra Stop','Delivered','Completed'];
+    const NO_EXTRA    = ['Submitted','Reviewed / Approved','Payment Received','In Transit','Picked Up','Delivered','Completed'];
 
     async function trackOrder() {
       const input      = document.getElementById('orderInput').value.trim().toUpperCase();
