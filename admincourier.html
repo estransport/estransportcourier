@@ -112,7 +112,7 @@ textarea{resize:vertical;min-height:70px}
   </div>
 </div>
 <script>
-var PIN="9193",SU="https://script.google.com/macros/s/AKfycbx14PLLwnSMOZhMIbD4NLTaXMjQCEUbzah6mVN_YL_rYuL6Kc8WoU-GEiJooi6-GeFC/exec",CU="https://docs.google.com/spreadsheets/d/e/2PACX-1vRCW5r0xE92x-KUG5QjmOmBMBeKq1PKzsA8CHa_vJ-FdTf6sOUbXGMS-XyfErxaZS8U-xPHrASDCl0K/pub?gid=1243888005&single=true&output=csv",SN="courier-orders",SC=12,NC=13,EC=9,sel="";
+var PIN="9193",SU="https://script.google.com/macros/s/AKfycbxKk97GyXTknalNGOLyUvMIgFjGlHNT0c5gu4UwDoRfmm11-nakwY3ddoglBmgFjSh5tA/exec",CU="https://docs.google.com/spreadsheets/d/e/2PACX-1vRCW5r0xE92x-KUG5QjmOmBMBeKq1PKzsA8CHa_vJ-FdTf6sOUbXGMS-XyfErxaZS8U-xPHrASDCl0K/pub?gid=1243888005&single=true&output=csv",SN="courier-orders",SC=12,NC=13,EC=9,sel="";
 
 document.getElementById("LBTN").addEventListener("click", checkPin);
 document.getElementById("LOBTN").addEventListener("click", logout);
@@ -195,7 +195,7 @@ async function submitUpdate(){
   if(!on){ alert("Please enter an order number."); return; }
   if(!sel){ alert("Please select a status."); return; }
   btn.classList.add("ld"); btn.disabled=true;
-  var p=new URLSearchParams({order:on,status:sel,notes:nt,extra_stop:ex,sheet:SN});
+  var p=new URLSearchParams({action:"update",order:on,status:sel,notes:nt,extra_stop:ex,sheet:SN});
   try{
     await fetch(SU+"?"+p.toString(),{method:"GET",mode:"no-cors"});
     await new Promise(function(r){ setTimeout(r,2000); });

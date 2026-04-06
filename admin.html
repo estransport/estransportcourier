@@ -195,7 +195,7 @@ async function submitUpdate(){
   if(!on){ alert("Please enter an order number."); return; }
   if(!sel){ alert("Please select a status."); return; }
   btn.classList.add("ld"); btn.disabled=true;
-  var p=new URLSearchParams({order:on,status:sel,notes:nt,extra_stop:ex,sheet:SN});
+  var p=new URLSearchParams({action:"update",order:on,status:sel,notes:nt,extra_stop:ex,sheet:SN});
   try{
     await fetch(SU+"?"+p.toString(),{method:"GET",mode:"no-cors"});
     await new Promise(function(r){ setTimeout(r,2000); });
